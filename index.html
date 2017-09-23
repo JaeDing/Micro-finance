@@ -1,17 +1,77 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <title>首页</title>
+    <link rel="stylesheet" href="./public/css/index.css">
 </head>
 <body>
 
 
-    <header>模板LOGO</header>
+    <header>
+        <div class="logo_bar">
+            <div class="logo_text">
+                <span class="logo_container">
+                <span class="logo_1"><strong>模</strong></span>
+                <span class="logo_2"><strong>版</strong></span>
+                <span class="logo_3"><strong>LOGO</strong></span>
+            </span>
+            </div>
+        </div>
+    </header>
 
-    <nav>导航</nav>
+    <div class="nav_holder">
+        <div>
+            <nav>
+                <ul>
+                    <li><a href="#/index">首页</a></li>
+                    <li><a href="#/aboutUs">关于我们</a></li>
+                    <li><a href="#/newsConsulting">新闻资讯</a></li>
+                    <li><a href="#/casesShow">案例展示</a></li>
+                    <li><a href="#/joinUs">人才招聘</a></li>
+                    <li><a href="#/contactUs">联系我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div ng-view></div>
 
     <footer>版权所有 ©2014   地址：上海市松江区佘山林荫大道18号   京ICP备********号</footer>
+
+
+    <script src="public/js/angular.js"></script>
+    <script src="public/js/angular-route.js"></script>
+    <script>
+
+
+
+        var myApp = angular.module('myApp',['ngRoute']);
+                myApp.config(['$routeProvider',function($routeProvider) {
+                    $routeProvider.when('/index',{
+                        template:'<h1>首页内容</h1>',
+                    }).when('/aboutUs',{
+                        template:'<h1>关于我们</h1>',
+//                                templateUrl:'./views/aboutUs.html'
+                            }).when('/',{
+                                templateUrl:'./views/productCenter.html'
+                            }).when('/newsConsulting',{
+                                templateUrl:''
+                            }).when('/casesShow',{
+                                templateUrl:''
+                            }).when('/joinUs',{
+                                templateUrl:''
+                            }).when('/contactUs',{
+                        template:'<h1>联系我们</h1>',
+                                templateUrl:''
+                            }).otherwise({
+                                redirectTo:'/index'
+                            });
+                }]);
+
+
+    </script>
+
+
 
 
 
